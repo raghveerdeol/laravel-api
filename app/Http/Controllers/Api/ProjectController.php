@@ -19,6 +19,10 @@ class ProjectController extends Controller
     }
 
     public function show(Project $project){
-
+        $project->loadMissing("technologies", "type");
+        return response()->json([
+            'success' => true,
+            'results' => $project
+        ]);
     }
 }
